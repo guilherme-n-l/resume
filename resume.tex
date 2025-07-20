@@ -69,7 +69,6 @@
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
@@ -99,6 +98,119 @@
 \newcommand{\resumeItemListStart}{\begin{itemize}}
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
+\newcommand{\link}[2]{\href{#1}{\underline{#2}}}
+
+\newcommand{\usrEducationEntry}[6]{
+\item
+    \resumeSubheading
+      {#1}{#2, #3} % Institution, State, City (Abv.)
+      {#4}{#5 -- #6} % Description, Start Date (Month (Abv.). Year), End Date (Month (Abv.). Year)
+}
+
+\newcommand{\usrExperienceEntry}[7]{
+\item
+    \resumeSubheading
+      {#1}{#2 -- #3} % Title, Start Date (Month (Abv.). Year), End Date (Month (Abv.). Year)
+      {#4}{#5, #6} % Institution, State, City (Abv.)
+      \resumeItemListStart
+      #7 % Description Items
+      \resumeItemListEnd
+}
+
+\newcommand{\usrProjectEntry}[5]{
+      \resumeProjectHeading
+          {\textbf{#1} $|$ % Project Name
+          \emph{#2}} % Technologies (CSV)
+          {#3 -- #4} % Start Date (Month (Abv.). Year), End Date (Month (Abv.). Year)
+          \resumeItemListStart
+          #5 % Description Items
+          \resumeItemListEnd
+}
+
+\newcommand{\usrCertificationEntry}[2]{
+    \resumeProjectHeading
+          {\textbf{#1}}{} % Company
+          \begin{center}
+          #2 % Certifications
+          \end{center}
+}
+
+\newcommand{\usrSkillsEntry}[1]{
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{#1}}
+ \end{itemize}}
+
+\newcommand{\usrSkill}[2]{\textbf{#1}{: #2}}
+
+%----------HEADING INFO----------
+\newcommand{\usrName}{}
+\newcommand{\usrPhoneNumber}{}
+\newcommand{\usrEmail}{}
+\newcommand{\usrLinkedIn}{}
+\newcommand{\usrGithub}{}
+
+%----------EDUCATION INFO----------
+
+\newcommand{\usrEducationA}{
+    \usrEducationEntry{}{}{}{}{}{}}
+
+%----------EXPERIENCE INFO----------
+
+\newcommand{\usrExperienceA}{
+    \usrExperienceEntry{}{}{}{}{}{}{
+        \resumeItem{}
+        \resumeItem{}}}
+
+\newcommand{\usrExperienceB}{
+    \usrExperienceEntry{}{}{}{}{}{}{
+        \resumeItem{}
+        \resumeItem{}}}
+
+%----------PROJECTS INFO----------
+
+\newcommand{\usrProjectA}{
+    \usrProjectEntry{}{}{}{}{
+        \resumeItem{}
+        \resumeItem{}
+        \resumeItem{}}}
+
+\newcommand{\usrProjectB}{
+    \usrProjectEntry{}{}{}{}{
+        \resumeItem{}
+        \resumeItem{}
+        \resumeItem{}
+        \resumeItem{}}}
+
+\newcommand{\usrProjectC}{
+    \usrProjectEntry{}{}{}{}{
+        \resumeItem{}
+        \resumeItem{}
+        \resumeItem{}
+        \resumeItem{}}}
+
+%----------CERTIFICATIONS INFO----------
+
+\newcommand{\usrCertificationA}{
+    \usrCertificationEntry{}{
+}}
+
+\newcommand{\usrCertificationB}{
+    \usrCertificationEntry{}{
+}}
+
+\newcommand{\usrCertificationC}{
+    \usrCertificationEntry{}{
+}}
+
+%----------SKILLS INFO----------
+
+\newcommand{\usrSkillsA}{
+    \usrSkill{Languages}{} \\
+     \usrSkill{Frameworks}{} \\
+     \usrSkill{Developer Tools}{} \\
+     \usrSkill{Libraries}{}}
+
+
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -106,113 +218,60 @@
 \begin{document}
 
 %----------HEADING----------
-% \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
-%   \textbf{\href{http://sourabhbajaj.com/}{\Large Sourabh Bajaj}} & Email : \href{mailto:sourabh@sourabhbajaj.com}{sourabh@sourabhbajaj.com}\\
-%   \href{http://sourabhbajaj.com/}{http://www.sourabhbajaj.com} & Mobile : +1-123-456-7890 \\
-% \end{tabular*}
-
 \begin{center}
-    \textbf{\Huge \scshape Jake Ryan} \\ \vspace{1pt}
-    \small 123-456-7890 $|$ \href{mailto:x@x.com}{\underline{jake@su.edu}} $|$ 
-    \href{https://linkedin.com/in/...}{\underline{linkedin.com/in/jake}} $|$
-    \href{https://github.com/...}{\underline{github.com/jake}}
+    \textbf{\Huge \scshape \usrName} \\ \vspace{1pt}
+    \small \usrPhoneNumber \: $|$
+    \link{mailto:\usrEmail}{\usrEmail} $|$ 
+    \link{https://linkedin.com/in/\usrLinkedIn}{linkedin.com/in/\usrLinkedIn} $|$
+    \link{https://github.com/\usrGithub}{github.com/\usrGithub}
 \end{center}
 
 
 %-----------EDUCATION-----------
 \section{Education}
   \resumeSubHeadingListStart
-    \resumeSubheading
-      {Southwestern University}{Georgetown, TX}
-      {Bachelor of Arts in Computer Science, Minor in Business}{Aug. 2018 -- May 2021}
-    \resumeSubheading
-      {Blinn College}{Bryan, TX}
-      {Associate's in Liberal Arts}{Aug. 2014 -- May 2018}
+          \usrEducationA
   \resumeSubHeadingListEnd
 
 
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Undergraduate Research Assistant}{June 2020 -- Present}
-      {Texas A\&M University}{College Station, TX}
-      \resumeItemListStart
-        \resumeItem{Developed a REST API using FastAPI and PostgreSQL to store data from learning management systems}
-        \resumeItem{Developed a full-stack web application using Flask, React, PostgreSQL and Docker to analyze GitHub data}
-        \resumeItem{Explored ways to visualize GitHub collaboration in a classroom setting}
-      \resumeItemListEnd
-      
-% -----------Multiple Positions Heading-----------
-%    \resumeSubSubheading
-%     {Software Engineer I}{Oct 2014 - Sep 2016}
-%     \resumeItemListStart
-%        \resumeItem{Apache Beam}
-%          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
-%     \resumeItemListEnd
-%    \resumeSubHeadingListEnd
-%-------------------------------------------
-
-    \resumeSubheading
-      {Information Technology Support Specialist}{Sep. 2018 -- Present}
-      {Southwestern University}{Georgetown, TX}
-      \resumeItemListStart
-        \resumeItem{Communicate with managers to set up campus computers used on campus}
-        \resumeItem{Assess and troubleshoot computer problems brought by students, faculty and staff}
-        \resumeItem{Maintain upkeep of computers, classroom equipment, and 200 printers across campus}
-    \resumeItemListEnd
-
-    \resumeSubheading
-      {Artificial Intelligence Research Assistant}{May 2019 -- July 2019}
-      {Southwestern University}{Georgetown, TX}
-      \resumeItemListStart
-        \resumeItem{Explored methods to generate video game dungeons based off of \emph{The Legend of Zelda}}
-        \resumeItem{Developed a game in Java to test the generated dungeons}
-        \resumeItem{Contributed 50K+ lines of code to an established codebase via Git}
-        \resumeItem{Conducted  a human subject study to determine which video game dungeon generation technique is enjoyable}
-        \resumeItem{Wrote an 8-page paper and gave multiple presentations on-campus}
-        \resumeItem{Presented virtually to the World Conference on Computational Intelligence}
-      \resumeItemListEnd
-
+          \usrExperienceA
+          \usrExperienceB
+% % -----------Multiple Positions Heading-----------
+% %    \resumeSubSubheading
+% %     {Software Engineer I}{Oct 2014 - Sep 2016}
+% %     \resumeItemListStart
+% %        \resumeItem{Apache Beam}
+% %          {Apache Beam is a unified model for defining both batch and streaming data-parallel processing pipelines}
+% %     \resumeItemListEnd
+% %    \resumeSubHeadingListEnd
+% %-------------------------------------------
   \resumeSubHeadingListEnd
 
 
 %-----------PROJECTS-----------
 \section{Projects}
-    \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{June 2020 -- Present}
-          \resumeItemListStart
-            \resumeItem{Developed a full-stack web application using with Flask serving a REST API with React as the frontend}
-            \resumeItem{Implemented GitHub OAuth to get data from user’s repositories}
-            \resumeItem{Visualized GitHub data to show collaboration}
-            \resumeItem{Used Celery and Redis for asynchronous tasks}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Simple Paintball} $|$ \emph{Spigot API, Java, Maven, TravisCI, Git}}{May 2018 -- May 2020}
-          \resumeItemListStart
-            \resumeItem{Developed a Minecraft server plugin to entertain kids during free time for a previous job}
-            \resumeItem{Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review}
-            \resumeItem{Implemented continuous delivery using TravisCI to build the plugin upon new a release}
-            \resumeItem{Collaborated with Minecraft server administrators to suggest features and get feedback about the plugin}
-          \resumeItemListEnd
-    \resumeSubHeadingListEnd
+  \resumeSubHeadingListStart
+      \usrProjectA
+      \usrProjectB
+      \usrProjectC
+  \resumeSubHeadingListEnd
+  
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+  \resumeSubHeadingListStart
+      \usrCertificationA
+      \usrCertificationB
+      \usrCertificationC
+  \resumeSubHeadingListEnd
 
 
-
-%
 %-----------PROGRAMMING SKILLS-----------
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Java, Python, C/C++, SQL (Postgres), JavaScript, HTML/CSS, R} \\
-     \textbf{Frameworks}{: React, Node.js, Flask, JUnit, WordPress, Material-UI, FastAPI} \\
-     \textbf{Developer Tools}{: Git, Docker, TravisCI, Google Cloud Platform, VS Code, Visual Studio, PyCharm, IntelliJ, Eclipse} \\
-     \textbf{Libraries}{: pandas, NumPy, Matplotlib}
-    }}
- \end{itemize}
+  \usrSkillsEntry{\usrSkillsA}
 
 
-%-------------------------------------------
 \end{document}
